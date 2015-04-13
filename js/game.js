@@ -12,7 +12,7 @@ var game = {
     // Run on page load.
     "onload" : function () {
     // Initialize the video.
-    if (!me.video.init("screen",  me.video.CANVAS, 320, 160, true, 'auto')) {
+    if (!me.video.init("screen",  me.video.CANVAS, 160, 80, true, 'auto')) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -49,6 +49,7 @@ var game = {
 
       // add our player entity in the entity pool
       me.pool.register("mainPlayer", game.PlayerEntity);
+      me.pool.register("coin", game.CoinEntity);
 
       // Start the game.
       me.state.change(me.state.PLAY);
