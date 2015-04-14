@@ -59,6 +59,30 @@
     <property name="spritewidth" value="8"/>
    </properties>
   </object>
+  <object name="coin" x="192" y="72" width="8" height="8">
+   <properties>
+    <property name="image" value="coin"/>
+    <property name="spritewidth" value="8"/>
+   </properties>
+  </object>
+  <object name="coin" x="184" y="72" width="8" height="8">
+   <properties>
+    <property name="image" value="coin"/>
+    <property name="spritewidth" value="8"/>
+   </properties>
+  </object>
+  <object name="coin" x="168" y="72" width="8" height="8">
+   <properties>
+    <property name="image" value="coin"/>
+    <property name="spritewidth" value="8"/>
+   </properties>
+  </object>
+  <object name="coin" x="176" y="72" width="8" height="8">
+   <properties>
+    <property name="image" value="coin"/>
+    <property name="spritewidth" value="8"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="collision" width="40" height="20" visible="0">
   <object x="8" y="118" width="64" height="9"/>

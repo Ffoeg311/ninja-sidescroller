@@ -24,7 +24,7 @@ game.HUD.Container = me.Container.extend({
         this.name = "HUD";
 
         // add our child score object at the top left corner
-        this.addChild(new game.HUD.ScoreItem(35,0));
+        this.addChild(new game.HUD.ScoreItem(10,5));
     }
 });
 
@@ -43,8 +43,8 @@ game.HUD.ScoreItem = me.Renderable.extend( {
     this._super(me.Renderable, 'init', [x, y, 10, 10]);
 
     // create a font
-    this.font = new me.BitmapFont("32x32_font", 32);
-    this.font.set("right");
+    this.font = new me.BitmapFont("fonty",  {x:8,y:12} , 1);
+    this.font.lineWidth = 10;
 
     // local copy of the global score
     this.score = -1;
@@ -67,6 +67,6 @@ game.HUD.ScoreItem = me.Renderable.extend( {
   * draw the score
   */
   draw : function (renderer) {
-    this.font.draw (renderer, game.data.score, this.pos.x, this.pos.y);
+    this.font.draw (renderer, this.score, this.pos.x, this.pos.y);
   }
 });
