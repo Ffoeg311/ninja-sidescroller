@@ -17,13 +17,13 @@ game.CoinEntity = me.CollectableEntity.extend({
   // an object is touched by something (here collected)
   onCollision : function (response, other) {
     // do something when collected
-    game.data.score++;    
+    game.data.score++;
     // make sure it cannot be collected "again"
     this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
     // remove it
     me.game.world.removeChild(this);
 
-    return false
+    return false;
   }
 });

@@ -50,6 +50,7 @@ var game = {
       // add our player entity in the entity pool
       me.pool.register("mainPlayer", game.PlayerEntity);
       me.pool.register("coin", game.CoinEntity);
+      me.pool.register("lava", game.LavaEntity);
 
       // Start the game.
       me.state.change(me.state.PLAY);
