@@ -61,6 +61,7 @@ game.PlayerEntity = me.Entity.extend({
     if (me.input.isKeyPressed('jump')) {
       // make sure we are not already jumping or falling
       if (!this.body.jumping && !this.body.falling) {
+        me.audio.play('jump');
         // set current vel to the maximum defined value
         // gravity will then do the rest
         this.body.vel.y = -this.body.maxVel.y * me.timer.tick;

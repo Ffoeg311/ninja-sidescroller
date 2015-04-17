@@ -3,11 +3,11 @@ game.PlayScreen = me.ScreenObject.extend({
      *  action to perform on state change
      */
     onResetEvent: function() {
-      // load a level      
+      // load a level
       me.levelDirector.loadLevel("area01");
       // reset the score
       game.data.score = 0;
-
+      me.audio.playTrack("animalfriends");
       // add our HUD to the game world
       this.HUD = new game.HUD.Container();
       me.game.world.addChild(this.HUD);

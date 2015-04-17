@@ -8,6 +8,7 @@ game.LavaEntity = me.LevelEntity.extend({
 
   onCollision : function (response, other) {
     // Make all other objects solid
+    me.audio.play('hero_death');
     game.data.score = 0;
     this._super(me.LevelEntity, 'onCollision', [response, other]);
   }

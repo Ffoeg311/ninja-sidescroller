@@ -20,7 +20,7 @@ game.CoinEntity = me.CollectableEntity.extend({
     game.data.score++;
     // make sure it cannot be collected "again"
     this.body.setCollisionMask(me.collision.types.NO_OBJECT);
-
+    me.audio.play('collect_point_1');
     // remove it
     me.game.world.removeChild(this);
 
