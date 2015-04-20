@@ -25,7 +25,6 @@ var game = {
     }
 
     // Initialize the audio.
-    console.log('initializing audio...');
     me.audio.init('mp3,ogg');
 
     // Set a callback to run when loading is complete.
@@ -52,6 +51,7 @@ var game = {
       me.pool.register('mainPlayer', game.PlayerEntity);
       me.pool.register('coin', game.CoinEntity);
       me.pool.register('lava', game.LavaEntity);
+      me.pool.register('platform', game.PlatformEntity);
 
       // Start the game.
       me.state.change(me.state.PLAY);

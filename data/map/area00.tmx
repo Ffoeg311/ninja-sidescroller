@@ -36,7 +36,7 @@
   <object x="312" y="0" width="8" height="112"/>
  </objectgroup>
  <objectgroup name="playerlayer" width="40" height="20">
-  <object name="mainPlayer" x="16" y="136" width="8" height="8">
+  <object name="mainPlayer" x="296" y="104" width="8" height="8">
    <properties>
     <property name="image" value="ninja_run_right"/>
     <property name="spriteheight" value="12"/>
@@ -101,6 +101,18 @@
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
     <property name="spritewidth" value="6"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platforms" width="40" height="20">
+  <object name="platform" x="280" y="107" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="0"/>
+    <property name="ymove" value="3"/>
    </properties>
   </object>
  </objectgroup>

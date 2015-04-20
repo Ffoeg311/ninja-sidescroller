@@ -9,7 +9,7 @@ game.CoinEntity = me.CollectableEntity.extend({
     this._super(me.CollectableEntity, 'init', [x, y , settings]);
     // define a basic spinning animation
     this.renderable.addAnimation('spin',  [0, 1]);
-    this.renderable.setCurrentAnimation('spin')
+    this.renderable.setCurrentAnimation('spin');
 
   },
 
