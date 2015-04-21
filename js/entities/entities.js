@@ -31,7 +31,7 @@ game.PlatformEntity = me.Entity.extend({
     this.body.collisionType = me.collision.types.WORLD_SHAPE;
     me.collision.check(this);
     this._super(me.Entity, 'update', [dt]);
-    // update the body movement
+    // TODO update the body movement
   },
 
    /**

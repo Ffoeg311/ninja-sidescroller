@@ -98,14 +98,14 @@ constructor
           // The velocity is reasonably fast enough to have penetrated to the overlap depth
           (~~this.body.vel.y >= ~~response.overlapV.y)
           ) {
-          // Disable collision on the x axis
-          response.overlapV.x = 0;
-          // Repond to the platform (it is solid)
-          return true;
+            // Disable collision on the x axis
+            response.overlapV.x = 0;
+            // Repond to the platform (it is solid)
+            return true;
           }
           // Do not respond to the platform (pass through)
           return true; // used to be false
-          }
+        }
         break;
       case me.collision.types.ENEMY_OBJECT:
         if ((response.overlapV.y>0) && !this.body.jumping) {
