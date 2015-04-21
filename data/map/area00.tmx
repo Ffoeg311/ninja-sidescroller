@@ -36,7 +36,7 @@
   <object x="312" y="0" width="8" height="112"/>
  </objectgroup>
  <objectgroup name="playerlayer" width="40" height="20">
-  <object name="mainPlayer" x="296" y="104" width="8" height="8">
+  <object name="mainPlayer" x="16" y="142" width="8" height="8">
    <properties>
     <property name="image" value="ninja_run_right"/>
     <property name="spriteheight" value="12"/>
@@ -45,28 +45,28 @@
   </object>
  </objectgroup>
  <objectgroup name="lava" width="40" height="20">
-  <object name="lava" x="88" y="152" width="8" height="8">
+  <object name="lava" x="88" y="156" width="8" height="4">
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
-  <object name="lava" x="120" y="152" width="8" height="8">
+  <object name="lava" x="120" y="156" width="8" height="4">
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
-  <object name="lava" x="152" y="152" width="40" height="8">
+  <object name="lava" x="152" y="156" width="40" height="4">
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
-  <object name="lava" x="248" y="152" width="8" height="8">
+  <object name="lava" x="248" y="156" width="8" height="4">
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
@@ -105,7 +105,47 @@
   </object>
  </objectgroup>
  <objectgroup name="platforms" width="40" height="20">
+  <object name="movingplatform" x="280" y="40" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="0"/>
+    <property name="ymove" value="3"/>
+   </properties>
+  </object>
   <object name="platform" x="280" y="107" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="0"/>
+    <property name="ymove" value="3"/>
+   </properties>
+  </object>
+  <object name="platform" x="264" y="99" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="0"/>
+    <property name="ymove" value="3"/>
+   </properties>
+  </object>
+  <object name="platform" x="248" y="91" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="0"/>
+    <property name="ymove" value="3"/>
+   </properties>
+  </object>
+  <object name="platform" x="232" y="86" width="8" height="8">
    <properties>
     <property name="image" value="platform"/>
     <property name="spriteheight" value="4"/>

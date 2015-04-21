@@ -51,7 +51,8 @@ var game = {
       me.pool.register('mainPlayer', game.PlayerEntity);
       me.pool.register('coin', game.CoinEntity);
       me.pool.register('lava', game.LavaEntity);
-      me.pool.register('platform', game.PlatformEntity);
+      me.pool.register('movingplatform', game.MovingPlatformEntity);
+      me.pool.register('platform', game.StaticPlatformEntity);
 
       // Start the game.
       me.state.change(me.state.PLAY);
