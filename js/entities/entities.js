@@ -1,6 +1,4 @@
-/*-------------------
-a player entity
--------------------------------- */
+/* Kills the player and restarts the level */
 game.LavaEntity = me.LevelEntity.extend({
   init: function(x, y, settings) {
     this._super(me.LevelEntity, 'init', [x, y , settings]);
@@ -10,6 +8,26 @@ game.LavaEntity = me.LevelEntity.extend({
     // Make all other objects solid
     me.audio.play('hero_death');
     game.data.score = 0;
+    this._super(me.LevelEntity, 'onCollision', [response, other]);
+  }
+});
+
+/* Takes the player to another level, preserving the score. */
+game.PortalEntity = me.LevelEntity.extend({
+  init: function(x, y, settings) {
+    /* settings consistant across all portals */
+    settings.image = "portal";
+    settings.spritewidth = 6;
+    settings.spriteheight = 8;
+    settings.duration = 250;
+    settings.fade = '#000000';
+    /* settings unique from tiled */
+    this._super(me.LevelEntity, 'init', [x, y , settings]);
+  },
+
+  onCollision : function (response, other) {
+    // Make all other objects solid
+    me.audio.play('portal');
     this._super(me.LevelEntity, 'onCollision', [response, other]);
   }
 });
@@ -30,7 +48,7 @@ game.StaticPlatformEntity = me.Entity.extend({
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
   },
 
-  onCollision : function (response, other) {  
+  onCollision : function (response, other) {
     return true;
   }
 });

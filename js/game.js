@@ -53,6 +53,7 @@ var game = {
       me.pool.register('lava', game.LavaEntity);
       me.pool.register('movingplatform', game.MovingPlatformEntity);
       me.pool.register('platform', game.StaticPlatformEntity);
+      me.pool.register('portal', game.PortalEntity);
 
       // Start the game.
       me.state.change(me.state.PLAY);
