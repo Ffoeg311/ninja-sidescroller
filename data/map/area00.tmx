@@ -48,29 +48,21 @@
  <objectgroup name="lava" width="40" height="20">
   <object name="lava" x="88" y="156" width="8" height="4">
    <properties>
-    <property name="duration" value="250"/>
-    <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
   <object name="lava" x="120" y="156" width="8" height="4">
    <properties>
-    <property name="duration" value="250"/>
-    <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
   <object name="lava" x="152" y="156" width="40" height="4">
    <properties>
-    <property name="duration" value="250"/>
-    <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
   <object name="lava" x="248" y="156" width="8" height="4">
    <properties>
-    <property name="duration" value="250"/>
-    <property name="fade" value="#000000"/>
     <property name="to" value="area00"/>
    </properties>
   </object>
@@ -160,7 +152,7 @@
  <objectgroup name="portals" width="40" height="20">
   <object name="portal" x="208" y="56" width="8" height="8">
    <properties>
-    <property name="to" value="area01"/>
+    <property name="to" value="area02"/>
    </properties>
   </object>
  </objectgroup>

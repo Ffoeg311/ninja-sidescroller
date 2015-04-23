@@ -1,6 +1,8 @@
 /* Kills the player and restarts the level */
 game.LavaEntity = me.LevelEntity.extend({
   init: function(x, y, settings) {
+    settings.duration = 250;
+    settings.fade = '#000000';  
     this._super(me.LevelEntity, 'init', [x, y , settings]);
   },
 
