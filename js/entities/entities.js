@@ -2,14 +2,14 @@
 game.LavaEntity = me.LevelEntity.extend({
   init: function(x, y, settings) {
     settings.duration = 250;
-    settings.fade = '#000000';  
+    settings.fade = '#000000';
     this._super(me.LevelEntity, 'init', [x, y , settings]);
   },
 
   onCollision : function (response, other) {
     // Make all other objects solid
     me.audio.play('hero_death');
-    game.data.score = 0;
+    game.data.score = game.data.prevScore;
     this._super(me.LevelEntity, 'onCollision', [response, other]);
   }
 });
@@ -29,6 +29,7 @@ game.PortalEntity = me.LevelEntity.extend({
 
   onCollision : function (response, other) {
     // Make all other objects solid
+    game.data.prevScore = game.data.score;
     me.audio.play('portal');
     this._super(me.LevelEntity, 'onCollision', [response, other]);
   }
