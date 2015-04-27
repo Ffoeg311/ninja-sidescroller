@@ -2,27 +2,28 @@
 /* Game namespace */
 var game = {
 
-    // an object where to store game information
-    data : {
-        // score
-        prevScore: 0,
-        score : 0
-    },
+  tileWidth: 8,
 
+  // an object where to store game information
+  data : {
+    // score
+    prevScore: 0,
+    score : 0
+  },
 
-    // Run on page load.
-    "onload" : function () {
+  // Run on page load.
+  "onload" : function () {
     // Initialize the video.
     if (!me.video.init('screen',  me.video.CANVAS, 160, 80, true, 'auto')) {
-        alert('Your browser does not support HTML5 canvas.');
-        return;
+      alert('Your browser does not support HTML5 canvas.');
+      return;
     }
 
     // add "#debug" to the URL to enable the debug Panel
     if (document.location.hash === '#debug') {
-        window.onReady(function () {
-            me.plugin.register.defer(this, me.debug.Panel, 'debug', me.input.KEY.V);
-        });
+      window.onReady(function () {
+        me.plugin.register.defer(this, me.debug.Panel, 'debug', me.input.KEY.V);
+      });
     }
 
     // Initialize the audio.

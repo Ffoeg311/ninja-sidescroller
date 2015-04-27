@@ -32,7 +32,7 @@
  </objectgroup>
  <objectgroup name="lava" width="20" height="40"/>
  <objectgroup name="coins" width="20" height="40">
-  <object name="coin" x="32" y="256" width="6" height="7">
+  <object name="coin" x="32" y="256" width="8" height="8">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
@@ -49,6 +49,16 @@
   <object name="lava" x="96" y="316" width="56" height="4">
    <properties>
     <property name="to" value="area02"/>
+   </properties>
+  </object>
+  <object name="movingplatform" x="16" y="264" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="0"/>
+    <property name="ymove" value="3"/>
    </properties>
   </object>
  </objectgroup>

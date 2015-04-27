@@ -4,7 +4,7 @@ game.PlayScreen = me.ScreenObject.extend({
   */
   onResetEvent: function() {
     // load a level
-    me.levelDirector.loadLevel("area00");
+    me.levelDirector.loadLevel("area02");
     // reset the score
     game.data.score = 0;
     me.audio.playTrack("animalfriends");

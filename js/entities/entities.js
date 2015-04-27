@@ -58,25 +58,33 @@ game.StaticPlatformEntity = me.Entity.extend({
 
 
 game.MovingPlatformEntity = me.Entity.extend({
+  // TODO implement horizontal motion, move speed to tiled property.
   init: function(x, y, settings) {
     // save the area size defined in Tiled
     var width = settings.width;
     var height = settings.height;
     // call the parent constructor
     this._super(me.Entity, 'init', [x, y , settings]);
-    // Set fields specific to platform
-    this.ymove = settings.ymove;
-    this.xmove = settings.xmove;
-    // manually update the entity bounds as we manually change the position
-    // this.updateBounds();
+    // Determine start and end y
+    this.startY = this.pos.y;
+    this.endY = this.startY - settings.ymove * game.tileWidth;
+    // Start the platform rising
+    this.rising = true;
+    this.body.gravity = 0;
     this.body.collisionType = me.collision.types.WORLD_SHAPE;
  },
 
   update: function(dt) {
+    var speed = 1;
     me.collision.check(this);
-    // TODO update the body movement
-    //this.body.vel.x = 1 * me.timer.tick;
-    // return true if we moved or if the renderable was updated
+    // Deal with vertical motion
+    if (this.rising){
+      this.body.vel.y = -1 * speed * me.timer.tick;
+      this.rising = this.pos.y > this.endY;
+    } else {
+      this.body.vel.y = speed * me.timer.tick;
+      this.rising = this.pos.y > this.startY;
+    }
     this.body.update(dt);
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 
