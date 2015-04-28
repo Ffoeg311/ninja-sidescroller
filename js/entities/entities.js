@@ -67,24 +67,48 @@ game.MovingPlatformEntity = me.Entity.extend({
     this._super(me.Entity, 'init', [x, y , settings]);
     // Determine start and end y
     this.startY = this.pos.y;
-    this.endY = this.startY - settings.ymove * game.tileWidth;
-    // Start the platform rising
+    this.endY = this.startY - (settings.ymove * game.tileWidth);
+    // Determine if there is any vertical motion
+    this.verticalMove = ( this.startY - this.endY != 0 );
+    // Determine the start and end x
+    this.startX = this.pos.x;
+    this.endX = this.startX + (settings.xmove * game.tileWidth);
+    // Determine if there is horizontal movement
+    this.horizontalMove = (this.startX - this.endX != 0);
+    // Start the platform rising and moving right
     this.rising = true;
+    this.walkRight = true;
+    // Platform moves independent to gravity
     this.body.gravity = 0;
     this.body.collisionType = me.collision.types.WORLD_SHAPE;
  },
 
   update: function(dt) {
-    var speed = 1;
+    var vSpeed = 1;
+    var hSpeed = 1;
     me.collision.check(this);
     // Deal with vertical motion
-    if (this.rising){
-      this.body.vel.y = -1 * speed * me.timer.tick;
-      this.rising = this.pos.y > this.endY;
-    } else {
-      this.body.vel.y = speed * me.timer.tick;
-      this.rising = this.pos.y > this.startY;
+    if(this.verticalMove){
+      if (this.rising){
+        this.body.vel.y = -1 * vSpeed * me.timer.tick;
+        this.rising = this.pos.y > this.endY;
+      } else {
+        this.body.vel.y = vSpeed * me.timer.tick;
+        this.rising = this.pos.y >= this.startY;
+      }
     }
+    
+    // Deal with horizontal motion
+    if(this.horizontalMove) {
+      if (this.walkingRight) {
+        this.body.vel.x = hSpeed * me.timer.tick;
+        this.walkingRight = this.pos.x < this.endX;
+      } else {
+        this.body.vel.x = -1 * hSpeed * me.timer.tick;
+        this.walkingRight = this.pos.x <= this.startX;
+      }
+    }
+    
     this.body.update(dt);
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 

@@ -61,6 +61,16 @@
     <property name="ymove" value="3"/>
    </properties>
   </object>
+  <object name="movingplatform" x="24" y="232" width="8" height="8">
+   <properties>
+    <property name="image" value="platform"/>
+    <property name="spriteheight" value="4"/>
+    <property name="spritewidth" value="8"/>
+    <property name="type" value="platform"/>
+    <property name="xmove" value="3"/>
+    <property name="ymove" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="portals" width="20" height="40"/>
 </map>
