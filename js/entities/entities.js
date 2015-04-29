@@ -58,7 +58,7 @@ game.StaticPlatformEntity = me.Entity.extend({
 
 
 game.MovingPlatformEntity = me.Entity.extend({
-  // TODO implement horizontal motion, move speed to tiled property.
+  // TODO move speed to tiled property.
   init: function(x, y, settings) {
     // save the area size defined in Tiled
     var width = settings.width;
@@ -78,33 +78,41 @@ game.MovingPlatformEntity = me.Entity.extend({
     // Start the platform rising and moving right
     this.rising = true;
     this.walkRight = true;
+    // Determine platform speed
+    this.xspeed = settings.xspeed;
+    this.yspeed = settings.yspeed;
+    console.log(this.xspeed + ' ' + this.yspeed); //SC
     // Platform moves independent to gravity
     this.body.gravity = 0;
+    // this.body.setFriction(.5, 0);
     this.body.collisionType = me.collision.types.WORLD_SHAPE;
  },
 
   update: function(dt) {
-    var vSpeed = 1;
-    var hSpeed = 1;
+    var hSpeed = this.xspeed;
     me.collision.check(this);
     // Deal with vertical motion
     if(this.verticalMove){
+      // up
       if (this.rising){
-        this.body.vel.y = -1 * vSpeed * me.timer.tick;
+        this.body.vel.y = -1 * this.yspeed * me.timer.tick;
         this.rising = this.pos.y > this.endY;
+      // down
       } else {
-        this.body.vel.y = vSpeed * me.timer.tick;
+        this.body.vel.y = this.yspeed * me.timer.tick;
         this.rising = this.pos.y >= this.startY;
       }
     }
     
     // Deal with horizontal motion
     if(this.horizontalMove) {
+      // left
       if (this.walkingRight) {
-        this.body.vel.x = hSpeed * me.timer.tick;
+        this.body.vel.x = this.xspeed * me.timer.tick;
         this.walkingRight = this.pos.x < this.endX;
+      // right
       } else {
-        this.body.vel.x = -1 * hSpeed * me.timer.tick;
+        this.body.vel.x = -1 * this.xspeed * me.timer.tick;
         this.walkingRight = this.pos.x <= this.startX;
       }
     }
@@ -115,6 +123,6 @@ game.MovingPlatformEntity = me.Entity.extend({
   },
 
   onCollision : function (response, other) {
-    return true;
+    return false;
   }
 });
