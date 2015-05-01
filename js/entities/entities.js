@@ -81,6 +81,8 @@ game.MovingPlatformEntity = me.Entity.extend({
     // Determine platform speed
     this.xspeed = settings.xspeed;
     this.yspeed = settings.yspeed;
+    // update the platform when it isn't on the screen
+    this.alwaysUpdate = true;
     // Platform moves independent to gravity
     this.body.gravity = 0;
     //this.body.setFriction(.9, 0);
