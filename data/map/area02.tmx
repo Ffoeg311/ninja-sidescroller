@@ -23,7 +23,7 @@
   <object x="32" y="214" width="24" height="8"/>
  </objectgroup>
  <objectgroup name="playerlayer" width="20" height="40">
-  <object name="mainPlayer" x="80" y="294" width="8" height="8">
+  <object name="mainPlayer" x="40" y="160" width="8" height="8">
    <properties>
     <property name="image" value="ninja_run_right"/>
     <property name="spriteheight" value="12"/>
@@ -52,11 +52,11 @@
     <property name="to" value="area02"/>
    </properties>
   </object>
-  <object name="movingplatform" x="20" y="272" width="8" height="8">
+  <object name="movingplatform" x="12" y="272" width="16" height="8">
    <properties>
-    <property name="image" value="platform"/>
+    <property name="image" value="platform_wide"/>
     <property name="spriteheight" value="4"/>
-    <property name="spritewidth" value="8"/>
+    <property name="spritewidth" value="16"/>
     <property name="type" value="platform"/>
     <property name="xmove" value="0"/>
     <property name="xspeed" value="0"/>
@@ -71,7 +71,7 @@
     <property name="spritewidth" value="16"/>
     <property name="type" value="platform"/>
     <property name="xmove" value="7"/>
-    <property name="xspeed" value="1"/>
+    <property name="xspeed" value=".1"/>
     <property name="ymove" value="0"/>
     <property name="yspeed" value="0"/>
    </properties>

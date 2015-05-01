@@ -18,7 +18,6 @@ constructor
 
     // ensure the player is updated even when outside of the viewport
     this.alwaysUpdate = true;
-
     // define a basic walking animation (using all frames)
     this.renderable.addAnimation("walk",  [0, 1, 2, 3]);
     // define a standing animation (using the first frame)
@@ -26,6 +25,10 @@ constructor
     // set the standing animation as default
     this.renderable.setCurrentAnimation("stand");
     this.body.collisionType = me.collision.types.PLAYER_OBJECT;
+    // Add a field to track if the player is carried by a platform
+    this.body.carried = false;
+    // Velocity that the carrying platform is moving
+    this.body.carrySpeed - 0;
   },
 
   /* -----
@@ -53,11 +56,17 @@ constructor
         this.renderable.setCurrentAnimation('walk');
       }
     } else {
-      this.body.vel.x = 0;
-      // change to the standing animation
-      this.renderable.setCurrentAnimation('stand');
+      // If the player is carried by the platform, they should move at the platform's speed
+      if (this.body.carried) {
+        this.body.vel.x = this.body.carrySpeed;
+        this.renderable.setCurrentAnimation('stand');
+      }
+      else {
+        this.body.vel.x = 0;
+        // change to the standing addAnimation
+        this.renderable.setCurrentAnimation('stand');
+      }
     }
-
     if (me.input.isKeyPressed('jump')) {
       // make sure we are not already jumping or falling
       if (!this.body.jumping && !this.body.falling) {
@@ -87,24 +96,19 @@ constructor
   onCollision : function (response, other) {
     switch (response.b.body.collisionType) {
       case me.collision.types.WORLD_SHAPE:
-        //console.log('the player collided with a world shape');
         // Simulate a platform object
-        if (other.type === 'platform') {
-          //console.log('the player hit a platform');
-          if (this.body.falling &&
-          !me.input.isKeyPressed('down') &&
-          // Shortest overlap would move the player upward
-          (response.overlapV.y > 0) &&
-          // The velocity is reasonably fast enough to have penetrated to the overlap depth
-          (~~this.body.vel.y >= ~~response.overlapV.y)
-          ) {
-            // Disable collision on the x axis
-            response.overlapV.x = 0;
-            // Repond to the platform (it is solid)
-            return true;
-          }
-          // Do not respond to the platform (pass through)
-          return true; // used to be false
+        if (other.type === "platform") {
+          // Disable collision on the x axis
+          response.overlapV.x = 0;
+          // Change velocity of body to follow platform
+          this.body.carrySpeed = other.body.vel.x;
+          // Repond to the platform (it is solid)
+          this.body.carried = true;
+          // player should respond to the platform
+          return true;
+        } else {
+          // When colliding with other objects, the body is player is no longer carried.
+          this.body.carried = false;
         }
         break;
       case me.collision.types.ENEMY_OBJECT:

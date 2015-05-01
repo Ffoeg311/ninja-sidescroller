@@ -58,7 +58,7 @@ game.StaticPlatformEntity = me.Entity.extend({
 
 
 game.MovingPlatformEntity = me.Entity.extend({
-  // TODO move speed to tiled property.
+  // TODO move speed to tiled property
   init: function(x, y, settings) {
     // save the area size defined in Tiled
     var width = settings.width;
@@ -81,10 +81,9 @@ game.MovingPlatformEntity = me.Entity.extend({
     // Determine platform speed
     this.xspeed = settings.xspeed;
     this.yspeed = settings.yspeed;
-    console.log(this.xspeed + ' ' + this.yspeed); //SC
     // Platform moves independent to gravity
     this.body.gravity = 0;
-    // this.body.setFriction(.5, 0);
+    //this.body.setFriction(.9, 0);
     this.body.collisionType = me.collision.types.WORLD_SHAPE;
  },
 
@@ -105,7 +104,7 @@ game.MovingPlatformEntity = me.Entity.extend({
     }
     
     // Deal with horizontal motion
-    if(this.horizontalMove) {
+    if (this.horizontalMove) {
       // left
       if (this.walkingRight) {
         this.body.vel.x = this.xspeed * me.timer.tick;
@@ -116,10 +115,8 @@ game.MovingPlatformEntity = me.Entity.extend({
         this.walkingRight = this.pos.x <= this.startX;
       }
     }
-    
     this.body.update(dt);
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
-
   },
 
   onCollision : function (response, other) {
