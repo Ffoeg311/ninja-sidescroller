@@ -70,14 +70,26 @@ game.MovingPlatformEntity = me.Entity.extend({
     this.endY = this.startY - (settings.ymove * game.tileWidth);
     // Determine if there is any vertical motion
     this.verticalMove = ( this.startY - this.endY != 0 );
-    // Determine the start and end x
-    this.startX = this.pos.x;
-    this.endX = this.startX + (settings.xmove * game.tileWidth);
+    
     // Determine if there is horizontal movement
-    this.horizontalMove = (this.startX - this.endX != 0);
+    this.horizontalMove = (this.leftX - this.endX != 0);
     // Start the platform rising and moving right
     this.rising = true;
-    this.walkRight = true;
+    console.log(settings.xmove);
+    this.walkingRight = settings.xmove > 0;
+    console.log(this.walkingRight);
+    if (this.walkingRight) {
+       // Determine the start and end x
+      this.leftX = this.pos.x;
+      this.rightX = this.leftX + (settings.xmove * game.tileWidth);  
+    } else {
+      this.rightX = this.pos.x;
+      this.leftX = this.rightX + (settings.xmove * game.tileWidth);  
+
+    }
+    console.log(this.leftX + ', ' + this.rightX);
+   
+    
     // Determine platform speed
     this.xspeed = settings.xspeed;
     this.yspeed = settings.yspeed;
@@ -90,7 +102,6 @@ game.MovingPlatformEntity = me.Entity.extend({
  },
 
   update: function(dt) {
-    var hSpeed = this.xspeed;
     me.collision.check(this);
     // Deal with vertical motion
     if(this.verticalMove){
@@ -103,18 +114,18 @@ game.MovingPlatformEntity = me.Entity.extend({
         this.body.vel.y = this.yspeed * me.timer.tick;
         this.rising = this.pos.y >= this.startY;
       }
-    }
-    
+    } 
     // Deal with horizontal motion
     if (this.horizontalMove) {
       // left
       if (this.walkingRight) {
         this.body.vel.x = this.xspeed * me.timer.tick;
-        this.walkingRight = this.pos.x < this.endX;
+        this.walkingRight = this.pos.x < this.rightX;
       // right
       } else {
         this.body.vel.x = -1 * this.xspeed * me.timer.tick;
-        this.walkingRight = this.pos.x <= this.startX;
+
+        this.walkingRight = this.pos.x <= this.leftX;
       }
     }
     this.body.update(dt);
