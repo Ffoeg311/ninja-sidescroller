@@ -100,7 +100,7 @@
     <property name="yspeed" value="0"/>
    </properties>
   </object>
-  <object name="movingplatform" x="12" y="192" width="16" height="8">
+  <object name="movingplatform" x="12" y="136" width="16" height="8">
    <properties>
     <property name="image" value="platform_wide"/>
     <property name="spriteheight" value="4"/>
@@ -108,7 +108,7 @@
     <property name="type" value="platform"/>
     <property name="xmove" value="0"/>
     <property name="xspeed" value="0"/>
-    <property name="ymove" value="8"/>
+    <property name="ymove" value="-6"/>
     <property name="yspeed" value=".5"/>
    </properties>
   </object>

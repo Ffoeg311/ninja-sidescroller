@@ -58,28 +58,28 @@ game.StaticPlatformEntity = me.Entity.extend({
 
 
 game.MovingPlatformEntity = me.Entity.extend({
-  // TODO move speed to tiled property
   init: function(x, y, settings) {
     // save the area size defined in Tiled
     var width = settings.width;
     var height = settings.height;
     // call the parent constructor
     this._super(me.Entity, 'init', [x, y , settings]);
+
+    // Start the platform rising
+    this.rising = settings.ymove > 0;
+    //TODO - change startY and endY to topY and bottomY
     // Determine start and end y
-    this.startY = this.pos.y;
-    this.endY = this.startY - (settings.ymove * game.tileWidth);
-    // Determine if there is any vertical motion
-    this.verticalMove = ( this.startY - this.endY != 0 );
+    if (this.rising) {
+      this.bottomY = this.pos.y;
+      this.topY = this.bottomY - (settings.ymove * game.tileWidth);
+    } else {
+      this.topY = this.pos.y;
+      this.bottomY = this.topY - (settings.ymove * game.tileWidth);
+    }
     
-    // Determine if there is horizontal movement
-    this.horizontalMove = (this.leftX - this.endX != 0);
-    // Start the platform rising and moving right
-    this.rising = true;
-    console.log(settings.xmove);
+    // Determine the far left and right coordinates of the platform
     this.walkingRight = settings.xmove > 0;
-    console.log(this.walkingRight);
     if (this.walkingRight) {
-       // Determine the start and end x
       this.leftX = this.pos.x;
       this.rightX = this.leftX + (settings.xmove * game.tileWidth);  
     } else {
@@ -87,9 +87,6 @@ game.MovingPlatformEntity = me.Entity.extend({
       this.leftX = this.rightX + (settings.xmove * game.tileWidth);  
 
     }
-    console.log(this.leftX + ', ' + this.rightX);
-   
-    
     // Determine platform speed
     this.xspeed = settings.xspeed;
     this.yspeed = settings.yspeed;
@@ -97,37 +94,34 @@ game.MovingPlatformEntity = me.Entity.extend({
     this.alwaysUpdate = true;
     // Platform moves independent to gravity
     this.body.gravity = 0;
-    //this.body.setFriction(.9, 0);
     this.body.collisionType = me.collision.types.WORLD_SHAPE;
  },
 
   update: function(dt) {
     me.collision.check(this);
     // Deal with vertical motion
-    if(this.verticalMove){
-      // up
-      if (this.rising){
-        this.body.vel.y = -1 * this.yspeed * me.timer.tick;
-        this.rising = this.pos.y > this.endY;
-      // down
-      } else {
-        this.body.vel.y = this.yspeed * me.timer.tick;
-        this.rising = this.pos.y >= this.startY;
-      }
-    } 
-    // Deal with horizontal motion
-    if (this.horizontalMove) {
-      // left
-      if (this.walkingRight) {
-        this.body.vel.x = this.xspeed * me.timer.tick;
-        this.walkingRight = this.pos.x < this.rightX;
-      // right
-      } else {
-        this.body.vel.x = -1 * this.xspeed * me.timer.tick;
-
-        this.walkingRight = this.pos.x <= this.leftX;
-      }
+    
+    // up
+    if (this.rising){
+      this.body.vel.y = -1 * this.yspeed * me.timer.tick;
+      this.rising = this.pos.y > this.topY;
+    // down
+    } else {
+      this.body.vel.y = this.yspeed * me.timer.tick;
+      this.rising = this.pos.y >= this.bottomY;
     }
+  
+    // Deal with horizontal motion
+    // left
+    if (this.walkingRight) {
+      this.body.vel.x = this.xspeed * me.timer.tick;
+      this.walkingRight = this.pos.x < this.rightX;
+    // right
+    } else {
+      this.body.vel.x = -1 * this.xspeed * me.timer.tick;
+      this.walkingRight = this.pos.x <= this.leftX;
+    }
+    
     this.body.update(dt);
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
   },
