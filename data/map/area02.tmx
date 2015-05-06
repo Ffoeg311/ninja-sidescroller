@@ -73,7 +73,7 @@
     <property name="xmove" value="0"/>
     <property name="xspeed" value="0"/>
     <property name="ymove" value="8"/>
-    <property name="yspeed" value=".5"/>
+    <property name="yspeed" value=".75"/>
    </properties>
   </object>
   <object name="movingplatform" x="56" y="216" width="16" height="8">

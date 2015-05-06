@@ -58,7 +58,7 @@ constructor
     } else {
       // If the player is carried by the platform, they should move at the platform's speed
       if (this.body.carried) {
-        this.body.vel.x = this.body.carrySpeed;
+        this.body.vel.x = this.body.carrySpeedX;
         this.renderable.setCurrentAnimation('stand');
       }
       else {
@@ -100,8 +100,10 @@ constructor
         if (other.type === "platform") {
           // Disable collision on the x axis
           response.overlapV.x = 0;
+
           // Change velocity of body to follow platform
-          this.body.carrySpeed = other.body.vel.x;
+          this.body.carrySpeedX = other.body.vel.x;
+          this.body.carrySpeedY = other.body.vel.y;
           // Repond to the platform (it is solid)
           this.body.carried = true;
           // player should respond to the platform

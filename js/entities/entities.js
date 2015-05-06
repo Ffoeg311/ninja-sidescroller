@@ -52,10 +52,9 @@ game.StaticPlatformEntity = me.Entity.extend({
   },
 
   onCollision : function (response, other) {
-    return true;
+    return false;
   }
 });
-
 
 game.MovingPlatformEntity = me.Entity.extend({
   init: function(x, y, settings) {
@@ -67,8 +66,8 @@ game.MovingPlatformEntity = me.Entity.extend({
 
     // Start the platform rising
     this.rising = settings.ymove > 0;
-    //TODO - change startY and endY to topY and bottomY
-    // Determine start and end y
+
+    // Determine lowest and highest coordinates of the platform
     if (this.rising) {
       this.bottomY = this.pos.y;
       this.topY = this.bottomY - (settings.ymove * game.tileWidth);
@@ -84,8 +83,7 @@ game.MovingPlatformEntity = me.Entity.extend({
       this.rightX = this.leftX + (settings.xmove * game.tileWidth);  
     } else {
       this.rightX = this.pos.x;
-      this.leftX = this.rightX + (settings.xmove * game.tileWidth);  
-
+      this.leftX = this.rightX + (settings.xmove * game.tileWidth);
     }
     // Determine platform speed
     this.xspeed = settings.xspeed;
@@ -100,24 +98,22 @@ game.MovingPlatformEntity = me.Entity.extend({
   update: function(dt) {
     me.collision.check(this);
     // Deal with vertical motion
-    
-    // up
     if (this.rising){
+      // up
       this.body.vel.y = -1 * this.yspeed * me.timer.tick;
       this.rising = this.pos.y > this.topY;
-    // down
     } else {
+      // down
       this.body.vel.y = this.yspeed * me.timer.tick;
       this.rising = this.pos.y >= this.bottomY;
     }
-  
     // Deal with horizontal motion
-    // left
     if (this.walkingRight) {
+      // left
       this.body.vel.x = this.xspeed * me.timer.tick;
       this.walkingRight = this.pos.x < this.rightX;
-    // right
     } else {
+      // right
       this.body.vel.x = -1 * this.xspeed * me.timer.tick;
       this.walkingRight = this.pos.x <= this.leftX;
     }
