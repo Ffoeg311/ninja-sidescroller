@@ -63,28 +63,28 @@
   </object>
  </objectgroup>
  <objectgroup name="coins" width="40" height="20">
-  <object name="coin" x="200" y="80" width="8" height="8">
+  <object name="coin" x="201" y="82" width="6" height="6">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
     <property name="spritewidth" value="6"/>
    </properties>
   </object>
-  <object name="coin" x="136" y="104" width="8" height="8">
+  <object name="coin" x="138" y="105" width="6" height="6">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
     <property name="spritewidth" value="6"/>
    </properties>
   </object>
-  <object name="coin" x="66" y="112" width="8" height="8">
+  <object name="coin" x="66" y="114" width="6" height="6">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
     <property name="spritewidth" value="6"/>
    </properties>
   </object>
-  <object name="coin" x="104" y="112" width="8" height="8">
+  <object name="coin" x="105" y="114" width="6" height="6">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>

@@ -28,7 +28,7 @@
   <object x="128" y="142" width="25" height="8"/>
  </objectgroup>
  <objectgroup name="playerlayer" width="20" height="40">
-  <object name="mainPlayer" x="40" y="200" width="8" height="8">
+  <object name="mainPlayer" x="80" y="280" width="8" height="8">
    <properties>
     <property name="image" value="ninja_run_right"/>
     <property name="spriteheight" value="12"/>
@@ -38,14 +38,14 @@
  </objectgroup>
  <objectgroup name="lava" width="20" height="40"/>
  <objectgroup name="coins" width="20" height="40">
-  <object name="coin" x="32" y="256" width="8" height="8">
+  <object name="coin" x="33" y="258" width="6" height="6">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
     <property name="spritewidth" value="6"/>
    </properties>
   </object>
-  <object name="coin" x="136" y="200" width="8" height="8">
+  <object name="coin" x="137" y="202" width="6" height="6">
    <properties>
     <property name="image" value="coin"/>
     <property name="spriteheight" value="6"/>
