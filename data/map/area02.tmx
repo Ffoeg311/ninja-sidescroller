@@ -26,6 +26,8 @@
   <object x="32" y="142" width="25" height="8"/>
   <object x="72" y="142" width="25" height="8"/>
   <object x="128" y="142" width="25" height="8"/>
+  <object x="0" y="0" width="8" height="320"/>
+  <object x="152" y="0" width="8" height="320"/>
  </objectgroup>
  <objectgroup name="playerlayer" width="20" height="40">
   <object name="mainPlayer" x="80" y="280" width="8" height="8">
